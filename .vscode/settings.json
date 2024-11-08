@@ -1,4 +1,39 @@
 {
   "editor.defaultFormatter": "biomejs.biome",
   "typescript.preferences.includePackageJsonAutoImports": "on",
+
+  // "scss.validate": true,
+  // "css.validate": true,
+  // "scss.scannerExclude": ["**/.git", "**/node_modules"],
+  // "editor.quickSuggestions": {
+  //   "strings": true
+  // }
+
+
+  // "scss.validate": true,
+  // "css.validate": true,
+  // "editor.quickSuggestions": {
+  //   "strings": true
+  // },
+  // "tailwindCSS.experimental.classRegex": [
+  //   ["@apply\\s+([^;]*);", "([^;]*)"],
+  //   ["cn\\(([^)]*)\\)", "([^)]*)"]
+  // ],
+  // "files.associations": {
+  //   "*.scss": "scss"
+  // }
+
+  "scss.validate": true,
+  "css.validate": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["@apply\\s+([^;]*);", "([^;]*)"],
+    ["cn\\(([^)]*)\\)", "([^)]*)"]
+  ],
+  "files.associations": {
+    "*.module.scss": "scss"
+  },
+  "css.customData": [".vscode/css-data.json"]
 }

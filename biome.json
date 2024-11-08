@@ -8,10 +8,7 @@
 	"files": {
 		"ignoreUnknown": false,
 		"ignore": [],
-		"include": [
-			"src/**/*.ts",
-			"src/**/*.tsx"
-		]
+		"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.scss", "src/**/*.css"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -39,5 +36,9 @@
 			"trailingCommas": "none",
 			"semicolons": "asNeeded"
 		}
+	},
+	"css": {
+		"formatter": { "enabled": true },
+		"linter": { "enabled": true }
 	}
 }
