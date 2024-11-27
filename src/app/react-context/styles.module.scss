@@ -1,0 +1,27 @@
+.container {
+  @apply min-h-screen p-8 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800;
+
+  h1 {
+    @apply text-3xl font-bold mb-8 text-slate-800 dark:text-white;
+  }
+
+  p {
+    @apply text-slate-600 dark:text-slate-400;
+  }
+}
+
+.example {
+  @apply bg-white dark:bg-slate-800 rounded-lg p-6 shadow-lg mb-8;
+
+  h2 {
+    @apply text-xl mb-4 text-slate-800 dark:text-white font-semibold;
+  }
+}
+
+.themeDemo {
+  @apply mt-4;
+}
+
+.userDemo {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6 mt-4;
+} 

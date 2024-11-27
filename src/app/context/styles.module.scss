@@ -1,0 +1,31 @@
+.container {
+  @apply p-8 max-w-7xl mx-auto min-h-screen 
+         bg-gradient-to-br from-slate-50 to-slate-100 
+         dark:from-slate-900 dark:to-slate-800;
+
+  h1 {
+    @apply text-3xl font-bold mb-4 text-slate-800 dark:text-white;
+  }
+
+  p {
+    @apply text-slate-600 dark:text-slate-400 leading-relaxed mb-8;
+  }
+}
+
+.example {
+  @apply bg-white dark:bg-slate-800 rounded-lg p-6 
+         shadow-lg mb-8 border-2 border-transparent 
+         hover:border-blue-500 transition-all duration-200;
+
+  h2 {
+    @apply text-xl mb-4 text-slate-800 dark:text-white font-semibold;
+  }
+}
+
+.themeDemo, .userDemo {
+  @apply p-4 rounded-lg mt-4;
+}
+
+.userDemo {
+  @apply flex gap-8 flex-wrap;
+} 

@@ -1,0 +1,52 @@
+.userInfo {
+  @apply bg-white dark:bg-slate-800 rounded-lg p-6 
+         shadow-lg min-w-[300px] transition-all duration-200
+         hover:shadow-xl border-2 border-transparent
+         hover:border-blue-500;
+}
+
+.header {
+  @apply flex items-center justify-between mb-4;
+}
+
+.avatar {
+  @apply w-12 h-12 rounded-full bg-blue-500 
+         flex items-center justify-center
+         text-white text-xl font-bold;
+}
+
+.status {
+  @apply flex items-center gap-2 text-sm 
+         text-slate-600 dark:text-slate-400;
+}
+
+.statusDot {
+  @apply w-2 h-2 rounded-full bg-slate-300;
+
+  &.active {
+    @apply bg-green-500;
+  }
+}
+
+.details {
+  h3 {
+    @apply text-xl font-semibold mb-3 
+           text-slate-800 dark:text-white;
+  }
+}
+
+.info {
+  @apply space-y-2;
+}
+
+.field {
+  @apply flex flex-col text-sm;
+
+  .label {
+    @apply text-slate-500 dark:text-slate-400;
+  }
+
+  .value {
+    @apply text-slate-700 dark:text-slate-200 font-medium;
+  }
+} 

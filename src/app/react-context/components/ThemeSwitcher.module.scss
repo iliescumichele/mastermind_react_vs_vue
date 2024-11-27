@@ -1,0 +1,16 @@
+.themeSwitcher {
+  @apply p-4 rounded-lg transition-all duration-200;
+
+  &.light {
+    @apply bg-slate-100 text-slate-800;
+  }
+
+  &.dark {
+    @apply bg-slate-800 text-white;
+  }
+
+  button {
+    @apply px-4 py-2 bg-blue-500 text-white rounded 
+           hover:bg-blue-600 transition-all duration-200;
+  }
+} 

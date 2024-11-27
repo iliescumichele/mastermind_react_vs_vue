@@ -1,0 +1,57 @@
+.section {
+  @apply mb-8 p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 shadow-sm;
+}
+
+.sectionTitle {
+  @apply text-xl font-semibold mb-4 text-gray-800 dark:text-white;
+}
+
+.todoList {
+  @apply list-none py-5 space-y-2;
+  height: 300px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-700 rounded;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded;
+  }
+
+  li {
+    @apply p-3 border border-gray-200 dark:border-gray-700 rounded-md 
+           text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800
+           transition-colors duration-200;
+
+    &:hover {
+      @apply bg-gray-50 dark:bg-gray-700;
+    }
+  }
+}
+
+.loadingMessage,
+.errorMessage {
+  @apply p-3 rounded-md border;
+}
+
+.loadingMessage {
+  @apply text-gray-700 dark:text-gray-300
+         border-gray-200 dark:border-gray-700
+         bg-white dark:bg-gray-800;
+}
+
+.errorMessage {
+  @apply text-red-600 dark:text-red-400
+         border-red-200 dark:border-red-900
+         bg-red-50 dark:bg-red-900/20;
+}
+
+.refreshButton {
+  @apply px-4 py-2 text-white rounded-md transition-colors duration-200
+         bg-indigo-600 hover:bg-indigo-700 hover:opacity-90;
+} 
