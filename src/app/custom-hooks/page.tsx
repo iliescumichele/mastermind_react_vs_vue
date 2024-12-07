@@ -1,8 +1,9 @@
 'use client'
 
 import styles from './styles.module.scss'
-import { useCounter, useMemoFetch, useFormInput } from './hooks/useCustomHooks'
+import { useCounter, useMemoFetch, useFormInput, useFetchData } from './hooks/useCustomHooks'
 import RandomComponent from './components/randomComponent'
+import { useState } from 'react'
 
 interface Todo {
 	id: number
@@ -11,19 +12,54 @@ interface Todo {
 	timestamp: string
 }
 
+const testCounter = () => {
+	const { count, increment, decrement, reset } = useCounter()
+
+	return (
+		<>
+			<section className={styles.section}>
+				<h2 className={styles.sectionTitle}>useCounter Demo</h2>
+				<div className={styles.counterControls}>
+					<button
+						type="button"
+						onClick={decrement}
+						className={`${styles.button} ${styles.primary}`}
+						aria-label="Decrementa"
+					>
+						-
+					</button>
+					<span className={styles.counterValue}>{count}</span>
+					<button
+						type="button"
+						onClick={increment}
+						className={`${styles.button} ${styles.primary}`}
+						aria-label="Incrementa"
+					>
+						+
+					</button>
+					<button type="button" onClick={reset} className={`${styles.button} ${styles.secondary}`}>
+						Reset
+					</button>
+				</div>
+			</section>
+		</>
+	)
+}
+
 export default function CustomHooksDemo() {
 	// Utilizzo del hook useCounter
-	const { count, increment, decrement, reset } = useCounter(0)
+	const { count, increment, decrement, reset } = useCounter()
 
+	const [test, setTest] = useState<string>('')
 	// Utilizzo del nuovo hook useMemoFetch invece di useFetchData
 	const {
 		data: todos,
 		loading,
-		error,
-		refresh
-	} = useMemoFetch<Todo[]>(
-		'https://jsonplaceholder.typicode.com/todos',
-		10000 // cache per 10 secondi
+		error
+		//refresh
+	} = useFetchData<Todo[]>(
+		'https://jsonplaceholder.typicode.com/todos'
+		// cache per 10 secondi
 	)
 
 	// Utilizzo del hook useFormInput
@@ -33,6 +69,8 @@ export default function CustomHooksDemo() {
 	return (
 		<div className={styles.container}>
 			<h1 className={styles.title}>Demo Custom Hooks React</h1>
+
+			{testCounter()}
 
 			{/* Sezione Counter */}
 			<section className={styles.section}>
@@ -77,8 +115,11 @@ export default function CustomHooksDemo() {
 			{/* Sezione Fetch Data */}
 			<section className={styles.section}>
 				<h2 className={styles.sectionTitle}>useMemoFetch Demo</h2>
+
+				<input value={test} onChange={(e) => setTest(e.target.value)} className={styles.input} />
+
 				<div className="mb-4">
-					<button type="button" onClick={refresh} className={`${styles.button} ${styles.secondary}`}>
+					<button type="button" onClick={() => {}} className={`${styles.button} ${styles.secondary}`}>
 						Ricarica Dati
 					</button>
 				</div>

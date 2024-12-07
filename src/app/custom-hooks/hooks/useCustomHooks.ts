@@ -1,21 +1,46 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 
+// Creiamo uno store globale fuori dall'hook
+let globalCount = 0
+
+// Array di funzioni di callback per notificare i cambiamenti
+const listeners = new Set<(count: number) => void>()
+
 // Hook per gestire un contatore con persistenza locale
-export const useCounter = (initialValue = 0) => {
-	const [count, setCount] = useState<number>(() => {
-		// Recupera il valore dal localStorage se esiste
-		const saved = localStorage.getItem('count')
-		return saved ? JSON.parse(saved) : initialValue
-	})
+export const useCounter = () => {
+	// Utilizziamo lo state locale per forzare i re-render
+	const [count, setLocalCount] = useState<number>(globalCount)
 
-	// Salva il valore nel localStorage quando cambia
 	useEffect(() => {
-		localStorage.setItem('count', JSON.stringify(count))
-	}, [count])
+		// Funzione che aggiorna lo state locale quando cambia il valore globale
+		const handleChange = (newCount: number) => {
+			setLocalCount(newCount)
+		}
 
-	const increment = () => setCount(count + 1)
-	const decrement = () => setCount(count - 1)
-	const reset = () => setCount(initialValue)
+		// Registriamo il listener
+		listeners.add(handleChange)
+
+		// Pulizia quando il componente viene smontato
+		return () => {
+			listeners.delete(handleChange)
+		}
+	}, [])
+
+	// Funzioni di update che modificano il valore globale
+	const increment = () => {
+		globalCount += 1
+		listeners.forEach((listener) => listener(globalCount))
+	}
+
+	const decrement = () => {
+		globalCount -= 1
+		listeners.forEach((listener) => listener(globalCount))
+	}
+
+	const reset = () => {
+		globalCount = 0
+		listeners.forEach((listener) => listener(globalCount))
+	}
 
 	return { count, increment, decrement, reset }
 }
@@ -114,7 +139,7 @@ export const useMemoFetch = <T>(url: string, cacheTime = 5000) => {
 				setLoading(false)
 			}
 		},
-		[url, cacheTime]
+		[url, cache]
 	)
 
 	// Memorizziamo i dati processati
